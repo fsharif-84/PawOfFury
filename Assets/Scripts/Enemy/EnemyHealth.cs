@@ -10,7 +10,13 @@ public class EnemyHealth : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    void Die()
+    {
+        GameManager.Instance.AddKill();
+        Destroy(gameObject);
     }
 }
