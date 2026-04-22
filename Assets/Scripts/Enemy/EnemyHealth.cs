@@ -17,6 +17,7 @@ public class EnemyHealth : MonoBehaviour
     void Die()
     {
         GameManager.Instance.AddKill();
+        GameManager.Instance.enemyCount--;
         Destroy(gameObject);
     }
 }

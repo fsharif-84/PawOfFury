@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossSpawner : MonoBehaviour
 {
@@ -8,17 +9,26 @@ public class BossSpawner : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("BossSpawner running. Instance = " + GameManager.Instance);
         if (!bossSpawned && GameManager.Instance.killCount >= 20)
         {
             SpawnBoss();
         }
     }
 
-    void SpawnBoss()
+    public void SpawnBoss()
     {
-        Instantiate(bossPrefab, spawnPoint.position, Quaternion.identity);
+        // Spawn the boss
+        GameObject boss = Instantiate(bossPrefab, spawnPoint.position, Quaternion.identity);
         bossSpawned = true;
         Debug.Log("BOSS SPAWNED!");
+
+        // Find the BossHealthBar slider in the scene
+        Slider bossSlider = GameObject.Find("BossHealthBar").GetComponent<Slider>();
+
+        // Assign the slider to the boss
+        boss.GetComponent<BossHealth>().bossHealthBar = bossSlider;
+
+        // Enable the UI
+        bossSlider.gameObject.SetActive(true);
     }
 }

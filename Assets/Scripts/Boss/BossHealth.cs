@@ -31,7 +31,7 @@ public class BossHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("Boss defeated!");
+        GameManager.Instance.enemyCount--;
         Destroy(gameObject);
-        // Later: Show YOU WIN screen
     }
 }

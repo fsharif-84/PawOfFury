@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public Slider healthBar;
-    public int maxHealth = 5;
+    public int maxHealth = 10;
     public int currentHealth;
 
     void Start()
@@ -34,7 +34,7 @@ public void TakeDamage(int damage)
 void Die()
 {
     Debug.Log("Player died!");
-    gameObject.SetActive(false); // TEMP death behavior
+    gameObject.SetActive(false);
 }
 
 }

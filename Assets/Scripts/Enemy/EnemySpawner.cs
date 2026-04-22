@@ -2,20 +2,24 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public float enemySpeedMultiplier = 1f;
     public GameObject enemyPrefab;
-    public float spawnInterval = 2f;
     public Transform[] spawnPoints;
 
-    void Start()
+    public void SpawnWave(int amount)
     {
-        InvokeRepeating("SpawnEnemy", 1f, spawnInterval);
-    }
+        for (int i = 0; i < amount; i++)
+        {
+            int index = Random.Range(0, spawnPoints.Length);
 
-    void SpawnEnemy()
-    {
-        if (spawnPoints.Length == 0) return;
+            //Spawn one enemy
+            var enemy = Instantiate(enemyPrefab, spawnPoints[index].position, Quaternion.identity);
 
-        int index = Random.Range(0, spawnPoints.Length);
-        Instantiate(enemyPrefab, spawnPoints[index].position, Quaternion.identity);
+            //Apply speed if enabled
+            enemy.GetComponent<EnemyFollow>().speed *= enemySpeedMultiplier;
+
+            //Count enemy
+            GameManager.Instance.enemyCount++;
+        }
     }
 }
