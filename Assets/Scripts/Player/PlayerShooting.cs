@@ -26,16 +26,15 @@ public class PlayerShooting : MonoBehaviour
     }
 
     void Shoot()
-    {
-        //Play sound
-        if (audioSource != null && shootSound != null)
-            audioSource.PlayOneShot(shootSound);
+{
+    if (audioSource != null && shootSound != null)
+        audioSource.PlayOneShot(shootSound);
 
-        //Shooting logic
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = (mousePos - transform.position).normalized;
+    Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    Vector2 direction = (mousePos - transform.position).normalized;
 
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        bullet.GetComponent<Rigidbody2D>().linearVelocity = direction * bulletSpeed;
-    }
+    GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+    bullet.GetComponent<PlayerBullet>().SetDirection(direction);
+}
+
 }

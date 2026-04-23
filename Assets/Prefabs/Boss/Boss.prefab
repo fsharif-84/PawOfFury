@@ -197,8 +197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossShooting
   bossBulletPrefab: {fileID: 5631896856567579556, guid: 5862bb4ffc46529478ef2d78c73309d4, type: 3}
-  shootInterval: 1.5
-  bulletSpeed: 6
+  shootInterval: 1
+  bulletSpeed: 8
 --- !u!82 &-6673561548387746023
 AudioSource:
   m_ObjectHideFlags: 0
