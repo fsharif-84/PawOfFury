@@ -1,4 +1,6 @@
 using UnityEngine;
+using TMPro;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -6,6 +8,8 @@ public class GameManager : MonoBehaviour
 
     public int killCount = 0;
     public int enemyCount = 0;
+    public TextMeshProUGUI scoreText;
+    private int score = 0;
 
     void Awake()
     {
@@ -16,6 +20,8 @@ public class GameManager : MonoBehaviour
     {
         killCount++;
         Debug.Log("Kills: " + killCount);
+        score++;
+        scoreText.text = "Score: " + score;
     }
 
 }
