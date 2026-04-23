@@ -8,6 +8,14 @@ public class PlayerShooting : MonoBehaviour
 
     float nextFireTime = 0f;
 
+    public AudioClip shootSound;
+    private AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void Update()
     {
         if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
@@ -19,6 +27,11 @@ public class PlayerShooting : MonoBehaviour
 
     void Shoot()
     {
+        //Play sound
+        if (audioSource != null && shootSound != null)
+            audioSource.PlayOneShot(shootSound);
+
+        //Shooting logic
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePos - transform.position).normalized;
 

@@ -6,23 +6,31 @@ public class BossHealth : MonoBehaviour
     public int maxHealth = 150;
     public int currentHealth;
 
-    public Slider bossHealthBar;
+    private Slider bossHealthBar;
+
+    public AudioClip hitSound;
+    private AudioSource audioSource;
 
     void Start()
     {
         currentHealth = maxHealth;
+
+        bossHealthBar = GameObject.Find("BossHealthBar").GetComponent<Slider>();
         bossHealthBar.maxValue = maxHealth;
         bossHealthBar.value = currentHealth;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        currentHealth = Mathf.Max(currentHealth, 0);
+        if (currentHealth < 0) currentHealth = 0;
 
         bossHealthBar.value = currentHealth;
 
-        if (currentHealth <= 0)
+        audioSource.PlayOneShot(hitSound);
+
+        if (currentHealth == 0)
         {
             Die();
         }
@@ -31,7 +39,7 @@ public class BossHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("Boss defeated!");
-        GameManager.Instance.enemyCount--;
+        FindObjectOfType<EnemySpawner>().endlessMode = false;
         Destroy(gameObject);
     }
 }

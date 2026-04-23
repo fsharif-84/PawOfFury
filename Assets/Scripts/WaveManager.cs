@@ -32,13 +32,16 @@ public class WaveManager : MonoBehaviour
             spawner.SpawnWave(20);
         }
         else if (currentWave == 3)
-        {
-            waveText.text = "Boss Wave!";
-            bossSpawner.SpawnBoss();
+{
+    waveText.text = "Boss Wave!";
+    bossSpawner.SpawnBoss();
 
-            spawner.enemySpeedMultiplier = 1.5f;
-            spawner.SpawnWave(50);
-        }
+    spawner.enemySpeedMultiplier = 1.5f;
+
+    // Enable endless spawning
+    spawner.endlessMode = true;
+}
+
 
         currentWave++;
     }

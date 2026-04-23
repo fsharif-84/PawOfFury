@@ -1,2 +1,15 @@
 fileFormatVersion: 2
 guid: f472b2fae489d8c4d95f45f829c821fe
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - bossPrefab: {instanceID: 0}
+  - spawnPoint: {instanceID: 0}
+  - bossSpawnSound: {fileID: 8300000, guid: 52d0e914a129cb34ea455e8f06e42eb1, type: 3}
+  - audioSource: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

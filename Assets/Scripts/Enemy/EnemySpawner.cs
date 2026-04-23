@@ -5,6 +5,7 @@ public class EnemySpawner : MonoBehaviour
     public float enemySpeedMultiplier = 1f;
     public GameObject enemyPrefab;
     public Transform[] spawnPoints;
+    public bool endlessMode = false;
 
     public void SpawnWave(int amount)
     {
